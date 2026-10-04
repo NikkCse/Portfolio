@@ -19,7 +19,7 @@ jobs:
           aws-region: us-east-2
 
       - name: Sync files to S3
-        run: aws s3 sync . s3://s3-nikk-mystorage --delete --exclude ".git/*" --exclude ".github/*"
+        run: aws s3 sync . s3://s3-nikk-mystorage/S3-resume --delete --exclude ".git/*" --exclude ".github/*"
 
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id E18LRV11MVAS50 --paths "/*"
