@@ -6,124 +6,210 @@
 <title>Nikhil Jassal — AWS Solutions Architect</title>
 <style>
   :root {
-    --bg: #0a0e1a;
-    --bg-soft: #0f1524;
-    --card: #141b2e;
-    --border: #232c42;
-    --accent: #5eead4;
-    --accent-dim: #0f3a36;
-    --text: #e8ecf4;
-    --muted: #8993a8;
+    --bg: #0b1220;
+    --bg-elev: #0f1829;
+    --card: #131d33;
+    --border: #1f2c47;
+    --orange: #ff9900;
+    --blue: #5eb8ff;
+    --text: #e7ecf5;
+    --muted: #8793ab;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: radial-gradient(ellipse 80% 50% at 50% -10%, #122133 0%, var(--bg) 60%);
+    background:
+      radial-gradient(900px 500px at 15% -10%, rgba(255,153,0,0.08), transparent 60%),
+      radial-gradient(700px 400px at 100% 0%, rgba(94,184,255,0.07), transparent 55%),
+      var(--bg);
     color: var(--text);
     line-height: 1.65;
-    padding: 0 24px;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap {
-    max-width: 700px;
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(11,18,32,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 760px;
     margin: 0 auto;
-    padding: 80px 0 90px;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-mark {
+    font-weight: 700;
+    font-size: 0.92rem;
+    letter-spacing: 0.3px;
+  }
+  .nav-mark span { color: var(--orange); }
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
 
   /* Hero */
   .hero {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 28px;
+    padding: 72px 0 56px;
   }
-  .avatar {
-    width: 58px;
-    height: 58px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #2dd4bf);
-    display: flex;
+  .badge {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #06140f;
-    letter-spacing: -0.5px;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--orange);
+    background: rgba(255,153,0,0.1);
+    border: 1px solid rgba(255,153,0,0.3);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  .badge::before {
+    content: "●";
+    font-size: 0.6rem;
   }
   h1 {
-    font-size: 1.65rem;
-    font-weight: 650;
-    letter-spacing: -0.3px;
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
   }
-  .tagline {
-    color: var(--accent);
-    font-size: 0.95rem;
+  .role {
+    color: var(--blue);
+    font-size: 1.05rem;
     font-weight: 500;
-    margin-top: 3px;
+    margin-bottom: 20px;
   }
-
-  .intro {
+  .hero-text {
     color: var(--muted);
-    font-size: 1rem;
-    max-width: 560px;
-    margin-bottom: 14px;
+    font-size: 0.98rem;
+    max-width: 580px;
+    margin-bottom: 28px;
   }
-  .role-line {
-    font-size: 0.9rem;
+  .stat-row {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .stat b {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
     color: var(--text);
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    border-left: 2px solid var(--accent);
-    padding: 11px 16px;
-    border-radius: 6px;
-    margin-bottom: 26px;
   }
-  .role-line b { color: var(--accent); font-weight: 600; }
-
+  .stat span {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
   .links {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 56px;
   }
   .links a {
     color: var(--text);
     text-decoration: none;
     border: 1px solid var(--border);
-    padding: 7px 15px;
-    border-radius: 999px;
-    font-size: 0.84rem;
+    background: var(--bg-elev);
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
     transition: all 0.15s ease;
   }
   .links a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--orange);
+    color: var(--orange);
   }
 
-  section { margin-bottom: 48px; }
+  section { padding: 50px 0; border-top: 1px solid var(--border); }
   .eyebrow {
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.3px;
     font-size: 0.72rem;
-    color: var(--muted);
-    font-weight: 600;
-    margin-bottom: 16px;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 18px;
   }
 
-  /* Expertise pills */
-  .pills {
+  /* About */
+  .about-text {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 600px;
+  }
+  .about-text + .about-text { margin-top: 14px; }
+  .about-text b { color: var(--text); font-weight: 600; }
+
+  .current-role {
+    margin-top: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 0.88rem;
+    color: var(--text);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .current-role .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+    margin-top: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(94,184,255,0.15);
+  }
+  .current-role b { color: var(--blue); }
+
+  /* Expertise groups */
+  .skill-groups {
+    display: grid;
+    gap: 18px;
+  }
+  .skill-group h4 {
+    font-size: 0.82rem;
+    color: var(--text);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .skill-group .items {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
   }
-  .pill {
-    font-size: 0.82rem;
-    color: var(--text);
+  .skill-group .items span {
+    font-size: 0.8rem;
+    color: var(--muted);
     background: var(--card);
     border: 1px solid var(--border);
-    padding: 7px 14px;
+    padding: 6px 13px;
     border-radius: 999px;
   }
 
@@ -132,137 +218,182 @@
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px 22px;
+    padding: 22px 24px;
     margin-bottom: 14px;
-    transition: border-color 0.15s ease;
+    position: relative;
+    transition: border-color 0.15s ease, transform 0.15s ease;
   }
-  .project:hover { border-color: var(--accent); }
+  .project:hover {
+    border-color: var(--orange);
+    transform: translateY(-1px);
+  }
+  .project-num {
+    font-size: 0.72rem;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
   .project h3 {
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .project p {
     color: var(--muted);
     font-size: 0.89rem;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .tags {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .tag {
-    background: var(--accent-dim);
-    color: var(--accent);
+    background: rgba(94,184,255,0.1);
+    color: var(--blue);
     font-size: 0.72rem;
-    font-weight: 500;
+    font-weight: 600;
     padding: 3px 10px;
     border-radius: 999px;
   }
-  .project a {
-    color: var(--accent);
+  .project a.view {
+    color: var(--orange);
     font-size: 0.85rem;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
   }
-  .project a:hover { text-decoration: underline; }
+  .project a.view:hover { text-decoration: underline; }
+
+  .more-soon {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 20px;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+  }
 
   footer {
-    color: var(--muted);
-    font-size: 0.82rem;
+    padding: 36px 0 60px;
     text-align: center;
-    margin-top: 70px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
+  }
+  footer .links { justify-content: center; margin-bottom: 14px; }
+  footer p {
+    color: var(--muted);
+    font-size: 0.8rem;
   }
 
-  @media (max-width: 500px) {
-    .wrap { padding: 50px 0 60px; }
-    h1 { font-size: 1.4rem; }
+  @media (max-width: 560px) {
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 0.78rem; }
+    h1 { font-size: 1.7rem; }
+    .hero { padding: 48px 0 40px; }
+    section { padding: 38px 0; }
   }
 </style>
 </head>
 <body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-mark">NIKHIL<span>.</span>DEV</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="wrap">
 
     <div class="hero">
-      <div class="avatar">NJ</div>
-      <div>
-        <h1>Nikhil Jassal</h1>
-        <div class="tagline">AWS Certified Solutions Architect</div>
+      <div class="badge">AWS Certified Solutions Architect</div>
+      <h1>Nikhil Jassal</h1>
+      <div class="role">Solutions Architect · Cloud Engineer · Implementation Specialist</div>
+      <p class="hero-text">I design and deploy AWS infrastructure, and I bridge the gap between enterprise systems and the business requirements they need to serve — built from 8+ years implementing production-scale platforms.</p>
+
+      <div class="stat-row">
+        <div class="stat"><b>8+</b><span>Years in SaaS &amp; Enterprise</span></div>
+        <div class="stat"><b>SAA-C03</b><span>AWS Certified</span></div>
+        <div class="stat"><b>GTA</b><span>Ontario, Canada</span></div>
+      </div>
+
+      <div class="links">
+        <a href="https://www.linkedin.com/in/nikhiljassal07" target="_blank">LinkedIn</a>
+        <a href="https://github.com/NikkCse" target="_blank">GitHub</a>
+        <a href="mailto:Nikhiljassal.ca@gmail.com">Email</a>
       </div>
     </div>
 
-    <p class="intro">8+ years across SaaS, enterprise systems, and technical operations — troubleshooting, system integrations, API diagnostics, and data validation at scale. I translate business requirements into production-grade systems, now backed by hands-on AWS architecture experience.</p>
+    <section id="about">
+      <div class="eyebrow">About</div>
+      <p class="about-text">I'm an <b>AWS Certified Solutions Architect</b> with 8+ years of experience across SaaS, enterprise systems, and technical operations — including troubleshooting, system integrations, API diagnostics, and data validation at scale.</p>
+      <p class="about-text">I have hands-on experience designing secure, scalable, and cost-effective cloud architectures — EC2, VPC networking and security groups, load balancers, RDS/Aurora, S3, and Lambda-based serverless workflows. I've built and deployed real AWS projects, including this site itself: a static architecture hosted on S3, served through CloudFront, and auto-deployed via GitHub Actions.</p>
+      <p class="about-text">I work well in fast-paced, multi-workstream environments, collaborating closely with Solution Architects, Engineers, and Product teams on high-quality production launches.</p>
 
-    <div class="role-line">
-      Currently <b>Solution Delivery Analyst at Instacart</b> — deploying white-label grocery platform solutions across SSO, CRM, loyalty, payments, and customer data integrations at enterprise scale.
-    </div>
-
-    <div class="links">
-      <a href="https://www.linkedin.com/in/nikhiljassal07" target="_blank">LinkedIn</a>
-      <a href="https://github.com/NikkCse" target="_blank">GitHub</a>
-      <a href="mailto:Nikhiljassal.ca@gmail.com">Email</a>
-    </div>
-
-    <section>
-      <div class="eyebrow">Expertise</div>
-      <div class="pills">
-        <span class="pill">AWS Architecture</span>
-        <span class="pill">EC2 &amp; VPC</span>
-        <span class="pill">RDS / Aurora</span>
-        <span class="pill">S3 &amp; Lambda</span>
-        <span class="pill">IAM &amp; Security</span>
-        <span class="pill">Load Balancing</span>
-        <span class="pill">System Integrations (SSO, CRM, Payments)</span>
-        <span class="pill">API Testing (Postman)</span>
-        <span class="pill">SQL &amp; Data Validation</span>
-        <span class="pill">Monitoring &amp; Observability</span>
-        <span class="pill">QA &amp; Regression Testing</span>
+      <div class="current-role">
+        <div class="dot"></div>
+        <div><b>Currently:</b> Solution Delivery Analyst at Instacart — deploying white-label grocery platform solutions across SSO, CRM, loyalty, payments, and customer data integrations at enterprise scale.</div>
       </div>
     </section>
 
-    <section>
+    <section id="expertise">
+      <div class="eyebrow">Expertise</div>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h4>Cloud &amp; Infrastructure</h4>
+          <div class="items">
+            <span>EC2</span><span>VPC</span><span>RDS / Aurora</span><span>S3</span><span>Lambda</span><span>Load Balancing</span><span>IAM &amp; Security</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Integration &amp; Delivery</h4>
+          <div class="items">
+            <span>SSO</span><span>CRM</span><span>Payments</span><span>API Testing (Postman)</span><span>SQL &amp; Data Validation</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Reliability &amp; Quality</h4>
+          <div class="items">
+            <span>Monitoring &amp; Observability</span><span>Defect Lifecycle Management</span><span>Regression Testing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
       <div class="eyebrow">Projects</div>
 
       <div class="project">
+        <div class="project-num">01</div>
         <h3>This Portfolio Site</h3>
-        <p>Static site hosted on S3, served through CloudFront with Origin Access Control, auto-deployed on every push via GitHub Actions.</p>
+        <p>Static site hosted on S3, served through CloudFront with Origin Access Control, auto-deployed on every push via GitHub Actions using a least-privilege IAM user.</p>
         <div class="tags">
           <span class="tag">S3</span>
           <span class="tag">CloudFront</span>
           <span class="tag">GitHub Actions</span>
+          <span class="tag">IAM</span>
           <span class="tag">CI/CD</span>
         </div>
-        <a href="https://github.com/NikkCse/aws-portfolio-site" target="_blank">View on GitHub →</a>
+        <a class="view" href="https://github.com/NikkCse/aws-portfolio-site" target="_blank">View on GitHub →</a>
       </div>
 
-      <div class="project">
-        <h3>S3 → Lambda Image Processing Pipeline</h3>
-        <p>[Short description: what triggers it, what the Lambda function does, where the output goes.]</p>
-        <div class="tags">
-          <span class="tag">S3</span>
-          <span class="tag">Lambda</span>
-          <span class="tag">Python</span>
-        </div>
-        <a href="#" target="_blank">View on GitHub →</a>
-      </div>
-
-      <div class="project">
-        <h3>Vendor Marketplace Platform</h3>
-        <p>[Short description of the vendor marketplace platform and which AWS services it runs on.]</p>
-        <div class="tags">
-          <span class="tag">AWS</span>
-        </div>
-        <a href="#" target="_blank">View on GitHub →</a>
-      </div>
+      <div class="more-soon">More projects coming soon</div>
     </section>
 
-    <footer>
-      Built and deployed on AWS · Updated 2026
+    <footer id="contact">
+      <div class="links">
+        <a href="https://www.linkedin.com/in/nikhiljassal07" target="_blank">LinkedIn</a>
+        <a href="https://github.com/NikkCse" target="_blank">GitHub</a>
+        <a href="mailto:Nikhiljassal.ca@gmail.com">Email</a>
+      </div>
+      <p>Built and deployed on AWS · Updated 2026</p>
     </footer>
+
   </div>
 </body>
 </html>
